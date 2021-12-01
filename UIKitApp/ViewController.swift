@@ -11,18 +11,29 @@ class ViewController: UIViewController {
     
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var mainLabel: UILabel!
+    @IBOutlet var slider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Label
-        mainLabel.text = ""
+//        mainLabel.text = String(slider.value)
         mainLabel.font = mainLabel.font.withSize(35)
         mainLabel.textAlignment = .center
         mainLabel.numberOfLines = 2
         
         // Segmented Control
         segmentedControl.insertSegment(withTitle: "Third", at: 2, animated: false)
+        
+        // Slider
+        slider.value = 1
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.minimumTrackTintColor = .yellow
+        slider.maximumTrackTintColor = .red
+        slider.thumbTintColor = .blue
+        
+        mainLabel.text = String(slider.value)
     }
     
     @IBAction func segmentedControlAction() {
@@ -38,6 +49,12 @@ class ViewController: UIViewController {
             mainLabel.textColor = .blue
         default: break
         }
+    }
+    @IBAction func sliderAction() {
+        let sliderValue = CGFloat(slider.value)
+        mainLabel.text = String(slider.value)
+        
+        view.backgroundColor = view.backgroundColor?.withAlphaComponent(sliderValue)
     }
     
 }
