@@ -3,6 +3,7 @@
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="c8S-mV-LEe">
-                                <rect key="frame" x="16" y="40" width="288" height="173"/>
+                                <rect key="frame" x="16" y="40" width="288" height="330"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mM7-6D-WgQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="35"/>
                                         <segments>
                                             <segment title="First"/>
                                             <segment title="Second"/>
@@ -30,17 +31,32 @@
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAy-fg-di5">
-                                        <rect key="frame" x="0.0" y="71" width="288" height="31"/>
+                                        <rect key="frame" x="0.0" y="74" width="288" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HlH-nO-RyT">
-                                        <rect key="frame" x="-2" y="142" width="292" height="32"/>
+                                        <rect key="frame" x="-2" y="148" width="292" height="35"/>
                                         <connections>
                                             <action selector="sliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="Me4-Nu-1kv"/>
                                         </connections>
                                     </slider>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJB-yR-fUj">
+                                        <rect key="frame" x="0.0" y="222" width="288" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSQ-1f-CHR">
+                                        <rect key="frame" x="0.0" y="296" width="288" height="34"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doneButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="MNf-cW-Mp1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -56,6 +72,7 @@
                         <outlet property="mainLabel" destination="kAy-fg-di5" id="4Yy-eH-AFt"/>
                         <outlet property="segmentedControl" destination="mM7-6D-WgQ" id="tcv-0u-49V"/>
                         <outlet property="slider" destination="HlH-nO-RyT" id="Lg6-a2-oyh"/>
+                        <outlet property="textField" destination="tJB-yR-fUj" id="2y0-jT-8xd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -64,6 +81,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
