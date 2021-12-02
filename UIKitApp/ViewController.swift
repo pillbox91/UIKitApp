@@ -69,7 +69,7 @@ class ViewController: UIViewController {
             return
         }
         
-        mainLabel.text = textField.text
+        mainLabel.text = inputText
     }
 }
 
