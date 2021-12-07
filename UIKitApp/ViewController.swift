@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var slider: UISlider!
     @IBOutlet var textField: UITextField!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var hideElementsSwitch: UISwitch!
+    @IBOutlet var switchLabel: UILabel!
+    @IBOutlet var stackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,13 @@ class ViewController: UIViewController {
         slider.thumbTintColor = .blue
         
         mainLabel.text = String(slider.value)
+        
+        // Date Picker
+//        datePicker.locale = Locale.current
+        datePicker.locale = Locale(identifier: "ru_RU")
+        
+        // Switch
+        hideElementsSwitch.onTintColor = .red
     }
     
     @IBAction func segmentedControlAction() {
@@ -61,15 +72,41 @@ class ViewController: UIViewController {
     @IBAction func doneButtonPressed() {
         guard let inputText = textField.text, !inputText.isEmpty else {
             print("Text field is empty")
+            showAlert(with: "Text field is empty", and: "Please enter your name")
             return
         }
         
         if let _ = Double(inputText) {
         print("Wrong format")
+        showAlert(with: "Wrong format", and: "Please enter your name")
             return
         }
         
         mainLabel.text = inputText
     }
+    
+    @IBAction func datePickerAction() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        mainLabel.text = dateFormatter.string(from: datePicker.date)
+    }
+    
+    @IBAction func switchAction() {
+        stackView.isHidden.toggle()
+        switchLabel.text = hideElementsSwitch.isOn ? "Show all elements" : "Hide all elements"
+    }
 }
 
+// MARK: - Alert Controller
+extension ViewController {
+    private func showAlert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.textField.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
